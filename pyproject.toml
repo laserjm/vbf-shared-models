@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vbfsharedmodels"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Jan-Michael Laser", email="jmlaser@web.de" },
 ]
-description = "A small example package"
+description = "Shared models for consistent usage over various microservices."
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/laserjm/vbf-shared-models"
+"Bug Tracker" = "https://github.com/laserjm/vbf-shared-models/issues"
