@@ -1,8 +1,8 @@
 from typing import List
 from pydantic import BaseModel
 
-from vbfsharedmodels.Strategy import Strategy
-from vbfsharedmodels.FilterCriteria import FilterCriteria
+from .Strategy import Strategy
+from .FilterCriteria import FilterCriteria
 
 
 class ComputeJobContext(BaseModel):
