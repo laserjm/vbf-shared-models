@@ -1,2 +1,1 @@
-from . import Strategy
-from . import FilterCriteria
+'''Module initialization'''

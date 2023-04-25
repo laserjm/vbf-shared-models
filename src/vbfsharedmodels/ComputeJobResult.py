@@ -1,9 +1,6 @@
 from typing import Any, List
 from pydantic import BaseModel
 
-from vbfsharedmodels.Strategy import Strategy
-from vbfsharedmodels.FilterCriteria import FilterCriteria
-
 
 class ComputeJobResult(BaseModel):
     model_type: str
