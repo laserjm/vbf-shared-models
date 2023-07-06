@@ -49,7 +49,7 @@ class ComputeJobV2Request(BaseModel):
                     "symbols": [
                         {
                             "symbol": "AAPL",
-                            "state": {
+                            "job_state": {
                                 "name": "finished",
                                 "message": ""
                             },
@@ -65,7 +65,7 @@ class ComputeJobV2Request(BaseModel):
                         },
                         {
                             "symbol": "GOOG",
-                            "state": {
+                            "job_state": {
                                 "name": "queued",
                                 "message": ""
                             },
