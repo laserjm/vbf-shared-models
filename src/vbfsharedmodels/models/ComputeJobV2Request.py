@@ -2,20 +2,22 @@ from typing import Any, Optional
 from bson import ObjectId
 from pydantic import BaseModel, Field
 
+
+from vbfsharedmodels.models.ComputeJobBaseV2 import ComputeJobBaseV2
 from vbfsharedmodels.models.ComputeJobContext import ComputeJobContext
 from vbfsharedmodels.models.ComputeJobResultV2 import ComputeJobResultV2
 from vbfsharedmodels.models.JobState import JobState
 
 
-class ComputeJobV2Request(BaseModel):
-    version: int = 3
-    start_date_time: str
-    end_date_time: str
-    compute_job_context: ComputeJobContext
-    job_state: JobState
-    file_name: str
-    user_id: str
-    compute_job_result: Optional[ComputeJobResultV2]
+class ComputeJobV2Request(ComputeJobBaseV2):
+    # version: int = 3
+    # start_date_time: str
+    # end_date_time: str
+    # compute_job_context: ComputeJobContext
+    # job_state: JobState
+    # file_name: str
+    # user_id: str
+    # compute_job_result: Optional[ComputeJobResultV2]
 
     class Config:
         allow_population_by_field_name = True
@@ -24,7 +26,6 @@ class ComputeJobV2Request(BaseModel):
         schema_extra = {
             "example": {
                 "start_date_time": "2022-07-30T09:52:50.374Z",
-                "end_date_time": "2022-07-30T09:52:50.374Z",
                 "compute_job_context": {
                     "strategy": "value",
                     "target_symbols": [
@@ -38,11 +39,6 @@ class ComputeJobV2Request(BaseModel):
                         "min_dividend_yield": 3.0
                     }
                 },
-                "job_state": {
-                    "name": "not started",
-                    "message": ""
-                },
-                "file_name": "./output/vbf_export_2023_01_11_19_38_04.csv",
                 "user_id": "000000-0000-0000-000000",
                 "compute_job_result": {
                     "model_type": "StrategicBasicData",
