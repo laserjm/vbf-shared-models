@@ -7,7 +7,7 @@ from vbfsharedmodels.models.ComputeJobResultV2 import ComputeJobResultV2
 from vbfsharedmodels.models.JobState import JobState
 
 
-class ComputeJobV2(BaseModel):
+class ComputeJobV2Request(BaseModel):
     version: int = 3
     start_date_time: str
     end_date_time: str
