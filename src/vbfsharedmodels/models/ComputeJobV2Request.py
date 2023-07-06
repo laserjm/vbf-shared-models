@@ -6,26 +6,9 @@ from vbfsharedmodels.models.ComputeJobContext import ComputeJobContext
 from vbfsharedmodels.models.ComputeJobResultV2 import ComputeJobResultV2
 from vbfsharedmodels.models.JobState import JobState
 
-# https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid objectid")
-        return ObjectId(v)
-
-    @classmethod
-    def __modify_schema__(cls, field_schema):
-        field_schema.update(type="string")
-
 
 class ComputeJobV2(BaseModel):
     version: int = 3
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     start_date_time: str
     end_date_time: str
     compute_job_context: ComputeJobContext
@@ -40,7 +23,6 @@ class ComputeJobV2(BaseModel):
         json_encoders = {ObjectId: str}
         schema_extra = {
             "example": {
-                "id": "63e400ec57891e82da21f7dd",
                 "start_date_time": "2022-07-30T09:52:50.374Z",
                 "end_date_time": "2022-07-30T09:52:50.374Z",
                 "compute_request": {
