@@ -25,12 +25,18 @@ class ComputeJobV2Request(BaseModel):
             "example": {
                 "start_date_time": "2022-07-30T09:52:50.374Z",
                 "end_date_time": "2022-07-30T09:52:50.374Z",
-                "compute_request": {
+                "compute_job_context": {
                     "strategy": "value",
-                    "workflow": "optimized",
                     "target_symbols": [
                         "all"
-                    ]
+                    ],
+                    "filter_criteria": {
+                        "market_capitalization": 300000000.0,
+                        "stock_exchanges": ["NYSE","NASDAQ","AMEX","EURONEXT","XETRA","LSE"],
+                        "dividend_paid": True,
+                        "isin_required": True,
+                        "min_dividend_yield": 3.0
+                    }
                 },
                 "job_state": {
                     "name": "not started",
@@ -42,30 +48,28 @@ class ComputeJobV2Request(BaseModel):
                     "model_type": "StrategicBasicData",
                     "symbols": [
                         {
-                            "AAPL": {
-                                "state": {
-                                    "name": "finished",
-                                    "message": ""
-                                },
-                                "data": {
-                                    "gates_passed": 2,
-                                    "weighted_score": 4.0,
-                                    "symbol": "ABC",
-                                    "isin": "DE019282HFU",
-                                    "company_name": "AB Co.",
-                                    "price": 123.45,
-                                    "market_cap": 100000000000
-                                }
+                            "symbol": "AAPL",
+                            "state": {
+                                "name": "finished",
+                                "message": ""
+                            },
+                            "data": {
+                                "gates_passed": 2,
+                                "weighted_score": 4.0,
+                                "symbol": "ABC",
+                                "isin": "DE019282HFU",
+                                "company_name": "AB Co.",
+                                "price": 123.45,
+                                "market_cap": 100000000000
                             }
                         },
                         {
-                            "GOOG": {
-                                "state": {
-                                    "name": "queued",
-                                    "message": ""
-                                },
-                                "data": {}
-                            }
+                            "symbol": "GOOG",
+                            "state": {
+                                "name": "queued",
+                                "message": ""
+                            },
+                            "data": {}
                         }
                     ]
                 }
