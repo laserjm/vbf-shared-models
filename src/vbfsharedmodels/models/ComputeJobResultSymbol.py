@@ -11,18 +11,20 @@ class ComputeJobResultSymbol(BaseModel):
 
     class Config:
         schema_extra = {
-            "symbol": "AAPL",
-            "job_state": {
-                "name": "finished",
-                "message": ""
-            },
-            "data": {
-                "gates_passed": 8,
-                "weighted_score": 4.0,
-                "symbol": "ABC",
-                "isin": "DE019282HFU",
-                "company_name": "AB Co.",
-                "price": 123.45,
-                "market_cap": 100000000000
+            "example": {
+                "symbol": "AAPL",
+                "job_state": {
+                    "name": "finished",
+                    "message": ""
+                },
+                "data": {
+                    "gates_passed": 8,
+                    "weighted_score": 4.0,
+                    "symbol": "ABC",
+                    "isin": "DE019282HFU",
+                    "company_name": "AB Co.",
+                    "price": 123.45,
+                    "market_cap": 100000000000
+                }
             }
         }
