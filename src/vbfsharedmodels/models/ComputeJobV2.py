@@ -7,6 +7,7 @@ from vbfsharedmodels.models.ComputeJobContext import ComputeJobContext
 from vbfsharedmodels.models.ComputeJobResultV2 import ComputeJobResultV2
 from vbfsharedmodels.models.JobState import JobState
 
+
 # https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/
 class PyObjectId(ObjectId):
     @classmethod
@@ -25,15 +26,7 @@ class PyObjectId(ObjectId):
 
 
 class ComputeJobV2(ComputeJobBaseV2):
-    # version: int = 3
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    # start_date_time: str
-    # end_date_time: str
-    # compute_job_context: ComputeJobContext
-    # job_state: JobState
-    # file_name: str
-    # user_id: str
-    # compute_job_result: Optional[ComputeJobResultV2]
 
     class Config:
         allow_population_by_field_name = True
@@ -43,12 +36,22 @@ class ComputeJobV2(ComputeJobBaseV2):
             "example": {
                 "id": "63e400ec57891e82da21f7dd",
                 "start_date_time": "2022-07-30T09:52:50.374Z",
-                "compute_request": {
+                "end_date_time": "2022-07-30T09:57:33.232Z",
+                "compute_job_context": {
                     "strategy": "value",
-                    "workflow": "optimized",
-                    "target_symbols": [
-                        "all"
-                    ]
+                    "target_symbols": ["all"],
+                    "filter_criteria": {
+                        "market_capitalization": 300000000.0,
+                        "stock_exchanges": [],
+                        "dividend_paid": True,
+                        "isin_required": True,
+                        "min_dividend_yield": 3.0,
+                    },
+                },
+                "job_state": {
+                    "name": "not started",
+                    "message": "",
+                    "jobs_to_compute": 0,
                 },
                 "user_id": "000000-0000-0000-000000",
                 "compute_job_result": {
@@ -56,10 +59,7 @@ class ComputeJobV2(ComputeJobBaseV2):
                     "symbols": [
                         {
                             "symbol": "AAPL",
-                            "job_state": {
-                                "name": "finished",
-                                "message": ""
-                            },
+                            "job_state": {"name": "finished", "message": ""},
                             "data": {
                                 "gates_passed": 2,
                                 "weighted_score": 4.0,
@@ -67,18 +67,15 @@ class ComputeJobV2(ComputeJobBaseV2):
                                 "isin": "DE019282HFU",
                                 "company_name": "AB Co.",
                                 "price": 123.45,
-                                "market_cap": 100000000000
-                            }
+                                "market_cap": 100000000000,
+                            },
                         },
                         {
                             "symbol": "GOOG",
-                            "job_state": {
-                                "name": "queued",
-                                "message": ""
-                            },
-                            "data": {}
-                        }
-                    ]
-                }
+                            "job_state": {"name": "queued", "message": ""},
+                            "data": {},
+                        },
+                    ],
+                },
             }
         }

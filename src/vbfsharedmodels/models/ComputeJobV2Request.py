@@ -10,14 +10,7 @@ from vbfsharedmodels.models.JobState import JobState
 
 
 class ComputeJobV2Request(ComputeJobBaseV2):
-    # version: int = 3
-    # start_date_time: str
-    # end_date_time: str
-    # compute_job_context: ComputeJobContext
-    # job_state: JobState
-    # file_name: str
-    # user_id: str
-    # compute_job_result: Optional[ComputeJobResultV2]
+    # no further fields
 
     class Config:
         allow_population_by_field_name = True
@@ -28,46 +21,15 @@ class ComputeJobV2Request(ComputeJobBaseV2):
                 "start_date_time": "2022-07-30T09:52:50.374Z",
                 "compute_job_context": {
                     "strategy": "value",
-                    "target_symbols": [
-                        "all"
-                    ],
+                    "target_symbols": ["IBM", "AAPL", "GOOG", "BLK", "MMM"],
                     "filter_criteria": {
                         "market_capitalization": 300000000.0,
-                        "stock_exchanges": ["NYSE","NASDAQ","AMEX","EURONEXT","XETRA","LSE"],
-                        "dividend_paid": True,
+                        "stock_exchanges": [],
+                        "dividend_paid": False,
                         "isin_required": True,
-                        "min_dividend_yield": 3.0
-                    }
+                        "min_dividend_yield": 0.0,
+                    },
                 },
                 "user_id": "000000-0000-0000-000000",
-                "compute_job_result": {
-                    "model_type": "StrategicBasicData",
-                    "symbols": [
-                        {
-                            "symbol": "AAPL",
-                            "job_state": {
-                                "name": "finished",
-                                "message": ""
-                            },
-                            "data": {
-                                "gates_passed": 2,
-                                "weighted_score": 4.0,
-                                "symbol": "ABC",
-                                "isin": "DE019282HFU",
-                                "company_name": "AB Co.",
-                                "price": 123.45,
-                                "market_cap": 100000000000
-                            }
-                        },
-                        {
-                            "symbol": "GOOG",
-                            "job_state": {
-                                "name": "queued",
-                                "message": ""
-                            },
-                            "data": {}
-                        }
-                    ]
-                }
             }
         }

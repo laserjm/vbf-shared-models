@@ -186,6 +186,7 @@ cython_debug/
 stocks.csv
 .DS_Store
 
+.vscode/
 output/
 src/PoC/dl_data
 src/PoC/data
